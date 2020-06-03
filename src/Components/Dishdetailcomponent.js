@@ -1,6 +1,7 @@
 import React from 'react';
 import "./MenuComponent";
-import { Card, CardImg, CardTitle, CardBody, CardText } from 'reactstrap';
+import { Card, CardImg, CardTitle, CardBody, CardText, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
 
@@ -13,26 +14,36 @@ function rendercomment(c) {
 	);
 }
 
-function Dishdetail({dish}) {
+function Dishdetail({dish,comments}) {
 	if (dish != null) {
-		const comm = dish.comments.map((c) => {
+		const comm = comments.map((c) => {
 			return rendercomment(c);
 		});
 		return (
 			<div className="container">
 				<div className="row" >
-					<div className="col-12 col-md-4" >
-						<Card>
-							<CardImg top src={dish.image} alt={dish.name} />
-							<CardBody>
-								<CardTitle>{dish.name}</CardTitle>
-								<CardText>{dish.description}</CardText>
-							</CardBody>
-						</Card>
+						<Breadcrumb>
+							<BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+							<BreadcrumbItem active>{dish.name}</BreadcrumbItem>
+						</Breadcrumb>
+						<div className="col-12">
+							<h3>{dish.name}</h3>
+							<hr />
 					</div>
-					<div className="col-6">
-						<h2>Comments</h2>
-						{comm}
+					<div className="row" >
+						<div className="col-12 col-md-4" >
+							<Card>
+								<CardImg top src={dish.image} alt={dish.name} />
+								<CardBody>
+									<CardTitle>{dish.name}</CardTitle>
+									<CardText>{dish.description}</CardText>
+								</CardBody>
+							</Card>
+						</div>
+						<div className="col-6">
+							<h2>Comments</h2>
+							{comm}
+						</div>
 					</div>
 
 				</div>
