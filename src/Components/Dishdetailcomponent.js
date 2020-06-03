@@ -1,26 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import "./MenuComponent";
 import { Card, CardImg, CardTitle, CardBody, CardText } from 'reactstrap';
 
 
-class Dishdetailcomp extends Component {
-	rendercomment(c) {
-		return (
-			<div key={c.id}>
-				<p>{c.comment}</p>
-				<p>--{c.author}, {c.date}</p>
-			</div>
-		);
 
-	}
-	render() {
-		const dish = this.props.dish;
-		if (dish != null) {
-			const comm = dish.comments.map((c) => {
-				return this.rendercomment(c)
-					;
-			});
-			return (
+function rendercomment(c) {
+	return (
+		<div key={c.id}>
+			<p>{c.comment}</p>
+			<p>--{c.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(c.date))) }</p>
+		</div>
+	);
+}
+
+function Dishdetail({dish}) {
+	if (dish != null) {
+		const comm = dish.comments.map((c) => {
+			return rendercomment(c);
+		});
+		return (
+			<div className="container">
 				<div className="row" >
 					<div className="col-12 col-md-4" >
 						<Card>
@@ -37,13 +36,13 @@ class Dishdetailcomp extends Component {
 					</div>
 
 				</div>
-			);
-		}
-		else {
-			return (
-				<div></div>
-			);
-		}
+			</div>
+		);
+	}
+	else {
+		return (
+			<div></div>
+		);
 	}
 }
-export default Dishdetailcomp;
+export default Dishdetail;
