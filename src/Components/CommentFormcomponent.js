@@ -50,15 +50,15 @@ class Commentform extends Component {
 								</Col>
 							</Row>
 							<Row className="form-group">
-								<Label htmlFor="name" md={4}>Your Name</Label>
+								<Label htmlFor="author" md={4}>Your Name</Label>
 								<Col md={12}>
-									<Control.text model=".name" className="form-control" name="name"
+									<Control.text model=".author" className="form-control" name="author"
 										validators={{
 											required, minLength: minLength(3), maxLength: maxLength(15)
 										}} />
 									<Errors
 										className="text-danger"
-										model=".name"
+										model=".author"
 										show="touched"
 										messages={{
 											required: 'Required',
