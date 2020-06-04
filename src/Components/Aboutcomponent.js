@@ -3,20 +3,31 @@ import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'r
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Random } from "react-animation-components";
 
 function RenderLeadder({ leader }) {
 	return (
-		<Media>
-			<Media left middle className="m-5">
-				<Media object src={baseUrl +leader.image} alt={leader.name} />
+		<Fade in>
+			<Media>
+				<Media left middle className="m-5">
+					<FadeTransform in transformProps={{
+						exitTransform: 'scale(0.1) translateX(-50%)'
+					}}>
+						<Media object src={baseUrl +leader.image} alt={leader.name} />
+					</FadeTransform>
+				</Media>
+				<Media body className="mt-5">
+					<Media heading> Leader {leader.name}</Media>
+					<Media body> {leader.designation}</Media>
+					<br />
+					<FadeTransform in transformProps={{
+						exitTransform: 'scale(0.1) translateX(50%)'
+					}}>
+					{leader.description}
+					</FadeTransform>
+				</Media>
 			</Media>
-			<Media body className="mt-5">
-				<Media heading> Leader {leader.name}</Media>
-				<Media body> {leader.designation}</Media>
-				<br />
-				{leader.description}
-			</Media>
-		</Media>
+		</Fade>
 	);
 }
 
@@ -65,6 +76,9 @@ function About(props) {
 					<p>The restaurant traces its humble beginnings to <em>The Frying Pan</em>, a successful chain started by our CEO, Mr. Peter Pan, that featured for the first time the world's best cuisines in a pan.</p>
 				</div>
 				<div className="col-12 col-md-5">
+					<FadeTransform in transformProps={{
+						exitTransform: 'scale(0.5) translateY(-50%)'
+					}}>
 					<Card>
 						<CardHeader className="bg-primary text-white">Facts At a Glance</CardHeader>
 						<CardBody>
@@ -80,6 +94,7 @@ function About(props) {
 							</dl>
 						</CardBody>
 					</Card>
+					</FadeTransform>
 				</div>
 				<div className="col-12">
 					<Card>
@@ -101,9 +116,11 @@ function About(props) {
 					<h2>Corporate Leadership</h2>
 				</div>
 				<div className="col-12">
-					<Media list>
-						{leaders}
-					</Media>
+					<Random in>
+						<Media list>
+							{leaders}
+						</Media>
+					</Random>
 				</div>
 			</div>
 		</div>
