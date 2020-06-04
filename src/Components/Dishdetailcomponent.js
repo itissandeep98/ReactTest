@@ -2,6 +2,7 @@ import React from 'react';
 import "./MenuComponent";
 import { Card, CardImg, CardTitle, CardBody, CardText, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import Commentform from './CommentFormcomponent';
 
 
 
@@ -9,10 +10,11 @@ function rendercomment(c) {
 	return (
 		<div key={c.id}>
 			<p>{c.comment}</p>
-			<p>--{c.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(c.date))) }</p>
+			<p>--{c.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(c.date)))}</p>
 		</div>
 	);
 }
+
 
 function Dishdetail({dish,comments}) {
 	if (dish != null) {
@@ -22,13 +24,13 @@ function Dishdetail({dish,comments}) {
 		return (
 			<div className="container">
 				<div className="row" >
-						<Breadcrumb>
-							<BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
-							<BreadcrumbItem active>{dish.name}</BreadcrumbItem>
-						</Breadcrumb>
-						<div className="col-12">
-							<h3>{dish.name}</h3>
-							<hr />
+					<Breadcrumb>
+						<BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+						<BreadcrumbItem active>{dish.name}</BreadcrumbItem>
+					</Breadcrumb>
+					<div className="col-12">
+						<h3>{dish.name}</h3>
+						<hr />
 					</div>
 					<div className="row" >
 						<div className="col-12 col-md-4" >
@@ -43,9 +45,9 @@ function Dishdetail({dish,comments}) {
 						<div className="col-6">
 							<h2>Comments</h2>
 							{comm}
+							<Commentform />
 						</div>
 					</div>
-
 				</div>
 			</div>
 		);
@@ -56,4 +58,5 @@ function Dishdetail({dish,comments}) {
 		);
 	}
 }
+
 export default Dishdetail;
