@@ -39,7 +39,6 @@ function Dishdetail(props) {
 	}
 	const dish = props.dish;
 	const comments = props.comments;
-	const addComment = props.addComment;
 	const dishId = dish.id;
 	if (dish != null) {
 		const comm = comments.map((c) => {
@@ -69,7 +68,7 @@ function Dishdetail(props) {
 						<div className="col-6">
 							<h2>Comments</h2>
 							{comm}
-							<Commentform dishId={dishId}  addComment={addComment}/>
+							<Commentform dishId={dishId}  postComment={props.postComment}/>
 						</div>
 					</div>
 				</div>
