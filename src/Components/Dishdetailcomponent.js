@@ -3,7 +3,7 @@ import "./MenuComponent";
 import { Card, CardImg, CardTitle, CardBody, CardText, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Commentform from './CommentFormcomponent';
-
+import { Loading } from "./LoadingComponent";
 
 
 function rendercomment(c) {
@@ -17,10 +17,29 @@ function rendercomment(c) {
 
 
 function Dishdetail(props) {
-	const dish=props.dish;
-	const comments=props.comments;
-	const addComment=props.addComment;
-	const dishId=dish.id;
+	
+	if(props.isLoading){
+		return(
+			<div className="container">
+				<div className="row">
+					<Loading/>
+				</div>
+			</div>
+		);
+	}
+	else if(props.errMess){
+		return (
+			<div className="container">
+				<div className="row">
+					<h4>{props.errMess}</h4>
+				</div>
+			</div>
+		);
+	}
+	const dish = props.dish;
+	const comments = props.comments;
+	const addComment = props.addComment;
+	const dishId = dish.id;
 	if (dish != null) {
 		const comm = comments.map((c) => {
 			return rendercomment(c);
