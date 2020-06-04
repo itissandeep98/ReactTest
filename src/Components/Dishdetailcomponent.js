@@ -16,7 +16,11 @@ function rendercomment(c) {
 }
 
 
-function Dishdetail({dish,comments}) {
+function Dishdetail(props) {
+	const dish=props.dish;
+	const comments=props.comments;
+	const addComment=props.addComment;
+	const dishId=dish.id;
 	if (dish != null) {
 		const comm = comments.map((c) => {
 			return rendercomment(c);
@@ -45,7 +49,7 @@ function Dishdetail({dish,comments}) {
 						<div className="col-6">
 							<h2>Comments</h2>
 							{comm}
-							<Commentform />
+							<Commentform dishId={dishId}  addComment={addComment}/>
 						</div>
 					</div>
 				</div>
