@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardImg, CardBody, CardTitle, CardText, CardSubtitle } from 'reactstrap';
 import { Loading } from './LoadingComponent';
 import { FadeTransform } from "react-animation-components";
+import { gitUrl } from '../shared/baseUrl';
 
 function RenderCard({ item, isLoading,errMess }) {
 	if(isLoading){
@@ -19,7 +20,7 @@ function RenderCard({ item, isLoading,errMess }) {
 			exitTransform: 'scale(0.5) translateY(-50%)'
 		}}>
 			<Card>
-				<CardImg src={"https://github.com/itissandeep98/ReactTest/raw/JSONServer/public/" +item.image} alt={item.name} />
+				<CardImg src={ gitUrl +item.image} alt={item.name} />
 				<CardBody>
 					<CardTitle>{item.name}</CardTitle>
 					{item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null}

@@ -3,6 +3,7 @@ import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'r
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { FadeTransform, Fade, Random } from "react-animation-components";
+import { gitUrl } from '../shared/baseUrl';
 
 function RenderLeadder({ leader }) {
 	return (
@@ -12,7 +13,7 @@ function RenderLeadder({ leader }) {
 					<FadeTransform in transformProps={{
 						exitTransform: 'scale(0.1) translateX(-50%)'
 					}}>
-						<Media object src={"https://github.com/itissandeep98/ReactTest/raw/JSONServer/public/" +leader.image} alt={leader.name} />
+						<Media object src={gitUrl +leader.image} alt={leader.name} />
 					</FadeTransform>
 				</Media>
 				<Media body className="mt-5">
