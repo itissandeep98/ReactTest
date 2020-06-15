@@ -1,1 +1,1 @@
-export const baseUrl='http://localhost:3001/';
+export const baseUrl ='http://my-json-server.typicode.com/itissandeep98/ReactTest/JSONServer/';

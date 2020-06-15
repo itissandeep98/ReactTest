@@ -15,7 +15,7 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
 	};
 	newComment.date = new Date().toISOString();
 
-	return fetch(baseUrl + 'comments', {
+	return fetch(baseUrl + 'POST/comments', {
 		method: "POST",
 		body: JSON.stringify(newComment),
 		headers: {
@@ -44,7 +44,7 @@ export const fetchDishes = () => (dispatch) => {
 
 	dispatch(dishesLoading(true));
 
-	return fetch(baseUrl + 'dishes')
+	return fetch(baseUrl + 'GET/dishes')
 		.then(response=>{
 			if(response.ok){
 				return response;
@@ -79,7 +79,7 @@ export const addDishes = (dishes) => ({
 });
 
 export const fetchComments = () => (dispatch) => {
-	return fetch(baseUrl + 'comments')
+	return fetch(baseUrl + 'GET/comments')
 		.then(response => {
 			if (response.ok) {
 				return response;
@@ -111,7 +111,7 @@ export const fetchPromos = () => (dispatch) => {
 
 	dispatch(promosLoading());
 
-	return fetch(baseUrl + 'promotions')
+	return fetch(baseUrl + 'GET/promotions')
 		.then(response => {
 			if (response.ok) {
 				return response;
@@ -149,7 +149,7 @@ export const fetchLeaders = () => (dispatch) => {
 
 	dispatch(leadersLoading());
 
-	return fetch(baseUrl + 'leaders')
+	return fetch(baseUrl + 'GET/leaders')
 		.then(response => {
 			if (response.ok) {
 				return response;
@@ -196,7 +196,7 @@ export const postFeedback = (firstname, lastname, telnum, email,agree,contactTyp
 	};
 	newFeedback.date = new Date().toISOString();
 
-	return fetch(baseUrl + 'feedback', {
+	return fetch(baseUrl + 'POST/feedback', {
 		method: "POST",
 		body: JSON.stringify(newFeedback),
 		headers: {
