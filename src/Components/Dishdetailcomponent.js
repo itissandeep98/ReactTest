@@ -62,7 +62,7 @@ function Dishdetail(props) {
 								exitTransform: 'scale(0.5) translateY(-50%)'
 							}}>
 								<Card>
-									<CardImg top src={"https://github.com/itissandeep98/ReactTest/raw/JSONServer/public/images/"+dish.image} alt={dish.name} />
+									<CardImg top src={"https://github.com/itissandeep98/ReactTest/raw/JSONServer/public/"+dish.image} alt={dish.name} />
 									<CardBody>
 										<CardTitle>{dish.name}</CardTitle>
 										<CardText>{dish.description}</CardText>
